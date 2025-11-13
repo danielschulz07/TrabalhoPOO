@@ -38,10 +38,6 @@ export class ContaCorrente extends Conta {
         }
     }
 
-
-
-
-
     depositar(valor) {
         if (valor >= (super.saldo)) {
             if (!super.depositar(valor)) {
@@ -49,7 +45,9 @@ export class ContaCorrente extends Conta {
                 super.depositar(super.depositar);
                 this.saldo += saldo;
             }
+            return true;
         }
+        return false;
     }
 
     sacar(valor) {
@@ -66,10 +64,8 @@ export class ContaCorrente extends Conta {
 
     limiteDisponivel(){
         if(this.#limiteCredito > this.#saldoDevedor){
-            
+            this.#limiteCredito = this.#limiteCredito - this.#saldoDevedor;
         }
-
-
 
     }
 
