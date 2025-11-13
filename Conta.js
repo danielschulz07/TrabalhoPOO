@@ -1,4 +1,4 @@
-import { Pessoa } from ".Pessoa.js";
+import {Pessoa} from "./Pessoa.js";
 
 export class Conta {
     static #qtdContas = 0;
@@ -23,19 +23,20 @@ export class Conta {
         return Conta.#qtdContas;
     }
 
-    set titular(cliente){
-        if(cliente == undefined || cliente instanceof Pessoa){
-            this.#titular = cliente;
-        }
+    get id(){
+        return this.#id;
     }
 
     get titular(){
         return this.#titular
     }
 
-    get id(){
-        return this.#id;
+    set titular(cliente){
+        if(cliente != undefined || cliente instanceof Pessoa){
+            this.#titular = cliente;
+        }
     }
+
 
     depositar(valor) {
         if(valor > 0){
@@ -55,7 +56,7 @@ export class Conta {
 
     transferir(valor, contaDestino){
         if(contaDestino instanceof Conta && this.sacar(valor)){
-            this.sacar(valor);
+            //this.sacar(valor);
             contaDestino.depositar(valor);
             return true;
         }
@@ -64,7 +65,7 @@ export class Conta {
 
     toString() {
         return ("\nID: " + this.#id +
-        "\nSaldo: " + this.#saldo.toFixed(2) +
-        "\nTitular: " + this.#titular.toString());
+        "\nSaldo: " + this.#saldo +
+        "\nTitular: " + this.#titular);
     }
 }
