@@ -6,7 +6,7 @@ export class ContaCorrente extends Conta {
     #juros;
     #saldoDevedor;
 
-    constructor(id, saldo, titular, tarifa = 17.5, limiteCredito = 0, juros = 3.12, saldoDevedor = 0) {
+    constructor(id, saldo, titular, tarifa = 17.5, limiteCredito = 100, juros = 3.12, saldoDevedor = 0) {
         super(id, saldo, titular);
         this.#tarifa = tarifa;
         this.limiteCredito = limiteCredito;
@@ -21,7 +21,7 @@ export class ContaCorrente extends Conta {
     set limiteCredito(novoLimite) {
         if (novoLimite >= 0) {
             this.#limiteCredito = novoLimite;
-        } else if (this.#limiteCredito == undefined) {
+        } else if (this.#limiteCredito == null) {
             this.#limiteCredito = 0;
         }
     }
@@ -39,7 +39,7 @@ export class ContaCorrente extends Conta {
     }
 
     depositar(valor) {
-        if (valor >= (super.saldo)) {
+        if (valor > 0) {
             if (!super.depositar(valor)) {
                 valor += super.saldo;
                 super.depositar(super.depositar);
@@ -63,10 +63,24 @@ export class ContaCorrente extends Conta {
     }
 
     limiteDisponivel(){
-        if(this.#limiteCredito > this.#saldoDevedor){
-            this.#limiteCredito = this.#limiteCredito - this.#saldoDevedor;
+        if(this.#saldoDevedor >= this.#limiteCredito){
+            return "Seu débito ultrapassou seu limite de crédito, você deve " + this.#saldoDevedor;
+        }else{
+            return super.saldo + this.#limiteCredito;
         }
 
+    }
+
+
+    viraMes(){
+        const somaDebito = this.#juros + this.#tarifa;
+        if(super.saldo <= somaDebito){
+            const sobra = super.saldo - somaDebito;
+            super.sacar(somaDebito - (sobra * -1));
+            this.#saldoDevedor -= sobra;
+        }else{
+            super.sacar(somaDebito);
+        }
     }
 
 

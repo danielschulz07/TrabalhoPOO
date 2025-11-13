@@ -24,7 +24,9 @@ conta1.transferir(trans, conta1)
 */
 
 
-let test = new ContaCorrente("DAdiel", "2000", "22222222", "20", "", "",)
+let test = new ContaCorrente("DAdiel", 100, "22222222", undefined, undefined, undefined,)
+
+let testpoupanca = new ContaPoupanca("bomdia", 200, undefined,0.5);
 
 console.log (func);
 
@@ -44,7 +46,14 @@ console.log("Dados do Funcionario:\n" + func);//("Dados do Funcionario:\n" + fun
 let cli1 = new Cliente("Roberto Carlos", "987.654.321-00", "02/02/2002");
 let cli2 = new Cliente("Zico", "654.321.987-11", "03/03/2003", 500, -500.0, "VIP");
 
-let vetPessoas = [func, cli1, cli2, test/*conta1, conta2*/];
+let vetPessoas = [func, cli1, cli2, test, testpoupanca/*conta1, conta2*/];
+
+testpoupanca.transferir(100,test);
+testpoupanca.viraMes();
+testpoupanca.viraMes();
+//test.viraMes();
+//alert(test.limiteDisponivel());
+
 
 console.log("\nNomes das Pessoas:\n");
 vetPessoas.forEach( (objPessoa) => {

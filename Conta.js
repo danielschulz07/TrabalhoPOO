@@ -6,7 +6,7 @@ export class Conta {
     #saldo;
     #titular;
 
-    constructor(cliente, saldo = 0.0){
+    constructor(cliente, saldo = 0){
         this.titular = cliente;
 
         if(saldo < 0){
@@ -29,6 +29,10 @@ export class Conta {
 
     get titular(){
         return this.#titular
+    }
+
+    get saldo(){
+        return this.#saldo;
     }
 
     set titular(cliente){
