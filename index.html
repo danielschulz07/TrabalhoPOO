@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco Simples com Switch Case</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      background-color: #2196F3;
+      color: white;
+      cursor: pointer;
+    }
+    .saldo {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+      <main class="container">
+        <label>Banco Simples e facil e rapido</label>
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="inCliente" placeholder="Nome do cliente">
+
+        <select name="opcao" id="selectOpcao">
+            <option value="">Selecione uma opção!</option>
+            <option value="Sacar">Sacar Algum valor.</option>
+            <option value="Depositar">Depositar Algum valor.</option>
+            <option value="Transferencia">Transferir Valor.</option>
+            <option value="RelatorioCliente">Mostrar Relatorio do Cliente.</option>
+            <option value="RelatorioGeral">Mostrar Relatorio Geral.</option>
+        </select>
+        <section>
+            <label>Valor: <input type="text" placeholder="Digite um Valor" id="inValor"></label>
+                <input type="button" value="Ok" id="btOk">
+                <pre id="outResultado">Resultado</pre> 
+            </section>
+        <section class="sectionResultado">
+    </main>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>

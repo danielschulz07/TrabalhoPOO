@@ -27,7 +27,7 @@ export class ContaCorrente extends Conta {
     }
 
     get saldoDevedor(){
-        return this.#saldoDevedor
+        return this.#saldoDevedor;
     }
 
     set saldoDevedor(novoLimiteDevedor){
@@ -39,7 +39,7 @@ export class ContaCorrente extends Conta {
     }
 
     depositar(valor) {
-        if (valor >= (super.saldo)) {
+        if (valor >= 0) {
             if (!super.depositar(valor)) {
                 valor += super.saldo;
                 super.depositar(super.depositar);
@@ -64,9 +64,10 @@ export class ContaCorrente extends Conta {
 
     limiteDisponivel(){
         if(this.#limiteCredito > this.#saldoDevedor){
-            this.#limiteCredito = this.#limiteCredito - this.#saldoDevedor;
+            return super.saldo + this.#limiteCredito;
+        } else {
+            alert("Quite seu saldo devedor primeiro para ver limite disponivel" + this.#limiteCredito)
         }
-
     }
 
 

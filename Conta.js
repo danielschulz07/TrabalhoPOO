@@ -23,6 +23,10 @@ export class Conta {
         return Conta.#qtdContas;
     }
 
+    get saldo(){
+        return this.#saldo;
+    }
+
     get id(){
         return this.#id;
     }
@@ -65,7 +69,7 @@ export class Conta {
 
     toString() {
         return ("\nID: " + this.#id +
-        "\nSaldo: " + this.#saldo +
-        "\nTitular: " + this.#titular);
+        "\nTitular: " + this.#titular +
+        "\nSaldo: " + this.#saldo);
     }
 }
