@@ -68,8 +68,8 @@ export class Conta {
     }
 
     toString() {
-        return ("\nID: " + this.#id +
-        "\nSaldo: " + this.#saldo +
-        "\nTitular: " + this.#titular);
+        return("\nTitular: " + this.#titular+
+         "\nID: " + this.#id +
+        "\nSaldo: " + this.#saldo);
     }
 }

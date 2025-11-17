@@ -46,7 +46,9 @@ console.log("Dados do Funcionario:\n" + func);//("Dados do Funcionario:\n" + fun
 let cli1 = new Cliente("Roberto Carlos", "987.654.321-00", "02/02/2002");
 let cli2 = new Cliente("Zico", "654.321.987-11", "03/03/2003", 500, -500.0, "VIP");
 
-let vetPessoas = [func, cli1, cli2, test, testpoupanca/*conta1, conta2*/];
+let conta = new Conta("marcos");
+
+let vetPessoas = [func, cli1, cli2, test, testpoupanca, conta/*conta1, conta2*/];
 
 testpoupanca.transferir(100,test);
 testpoupanca.viraMes();
