@@ -71,6 +71,7 @@ vetPessoas.forEach( (objPessoa) => {
 
 console.log(vetPessoas[0]);
 
+
 var pessoa1 = new Pessoa("Renato", "12334567789","10/10/2010");
 var pessoa2 = new Pessoa("Daniel", "34239482374", "09/09/2009");
 
@@ -78,8 +79,6 @@ var vetClientesBanco = [pessoa1, pessoa2];
 var vetContasBanco = [contaCorrente1, contaPoup1];
 
 vetContasBanco.forEach((conta)=>conta.viraMes());
-
-
 
 console.log("\nNomes das Pessoas:\n");
 vetContasBanco.forEach( (contas) => {
