@@ -63,10 +63,10 @@ export class ContaCorrente extends Conta {
     }
 
     limiteDisponivel(){
-        if(this.#saldoDevedor >= this.#limiteCredito){
-            return "Seu débito ultrapassou seu limite de crédito, você deve " + this.#saldoDevedor;
+        if(this.#saldoDevedor >= this.limiteCredito){
+            return (-this.#saldoDevedor);
         }else{
-            return super.saldo + this.#limiteCredito;
+            return super.saldo + (this.#limiteCredito - this.#saldoDevedor);
         }
 
     }

@@ -25,7 +25,7 @@ conta1.transferir(trans, conta1)
 */
 
 
-let contaCorrente1 = new ContaCorrente("DAdiel", 100, "22222222", undefined, undefined, undefined,)
+let contaCorrente1 = new ContaCorrente("DAdiel", 1, "22222222", undefined, undefined, undefined,)
 
 let contaPoup1 = new ContaPoupanca("bomdia", 200, undefined,0.5);
 
@@ -51,13 +51,15 @@ let conta = new Conta("marcos",99999999999);
 
 let vetPessoas = [func, cli1, cli2, contaCorrente1, contaPoup1, conta/*conta1, conta2*/];
 
-contaPoup1.transferir(100,contaCorrente1);
+//contaPoup1.transferir(100,contaCorrente1);
 contaPoup1.viraMes();
 contaPoup1.viraMes();
-conta.transferir(1,contaCorrente1);
-contaCorrente1.transferir(202,contaCorrente1);
+//conta.transferir(1,contaCorrente1);
+//contaCorrente1.transferir(202,contaCorrente1);
 //test.viraMes();
-//alert(test.limiteDisponivel());
+contaCorrente1.sacar(100);
+//contaCorrente1.viraMes();
+alert(contaCorrente1.limiteDisponivel());
 
 
 console.log("\nNomes das Pessoas:\n");
