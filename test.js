@@ -82,8 +82,8 @@ vetContasBanco.forEach((conta)=>conta.viraMes());
 
 
 console.log("\nNomes das Pessoas:\n");
-vetPessoas.forEach( (objPessoa) => {
-    console.log(objPessoa.toString());
+vetContasBanco.forEach( (contas) => {
+    console.log(contas.toString());
     //objPessoa.categoria = "VIP";
     //console.log(objPessoa.categoria + " - " + objPessoa.constructor.name);
 });

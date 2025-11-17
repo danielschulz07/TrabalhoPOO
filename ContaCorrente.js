@@ -6,7 +6,7 @@ export class ContaCorrente extends Conta {
     #juros;
     #saldoDevedor;
 
-    constructor(id, saldo, titular, tarifa = 17.5, limiteCredito = 100, juros = 3.12, saldoDevedor = 0) {
+    constructor(id, saldo, titular, tarifa = 17.5, limiteCredito = 100, juros = 0.1, saldoDevedor = 0) {
         super(id, saldo, titular);
         this.#tarifa = tarifa;
         this.limiteCredito = limiteCredito;
@@ -73,11 +73,11 @@ export class ContaCorrente extends Conta {
 
 
     viraMes(){
-        const somaDebito = this.#juros + this.#tarifa;
+        const somaDebito = this.#juros * this.#saldoDevedor + this.#tarifa;
         if(super.saldo <= somaDebito){
-            const sobra = super.saldo - somaDebito;
-            super.sacar(somaDebito - (sobra * -1));
-            this.#saldoDevedor -= sobra;
+            const sobra = somaDebito - super.saldo;
+            super.sacar(super.saldo);
+            this.#saldoDevedor += sobra;
         }else{
             super.sacar(somaDebito);
         }
