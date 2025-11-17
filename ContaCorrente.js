@@ -30,13 +30,13 @@ export class ContaCorrente extends Conta {
         return this.#saldoDevedor
     }
 
-    set saldoDevedor(novoLimiteDevedor){
+    /*set saldoDevedor(novoLimiteDevedor){
         if(novoLimiteDevedor > this.#saldoDevedor){
             this.#saldoDevedor = novoLimiteDevedor;
         } else if(this.#saldoDevedor == undefined){
             this.#saldoDevedor = 0;
         }
-    }
+    }*/
 
     depositar(valor) {
         if (valor > 0) {
