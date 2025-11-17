@@ -65,3 +65,5 @@ vetPessoas.forEach( (objPessoa) => {
 });
 
 console.log(vetPessoas[0]);
+
+test.transferir(50.00 , testepoupanca);
