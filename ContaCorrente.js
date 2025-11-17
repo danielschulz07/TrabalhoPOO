@@ -11,7 +11,7 @@ export class ContaCorrente extends Conta {
         this.#tarifa = tarifa;
         this.limiteCredito = limiteCredito;
         this.#juros = juros;
-        this.saldoDevedor = saldoDevedor;
+        this.#saldoDevedor = saldoDevedor;
     }
 
     get limiteCredito() {
