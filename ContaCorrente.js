@@ -73,11 +73,12 @@ export class ContaCorrente extends Conta {
 
 
     viraMes(){
-        const somaDebito = this.#juros + this.#tarifa;
+        //const somaDebito = this.#juros * this.#saldoDevedor + this.#tarifa;
+        const somaDebito = this.#juros + this.#tarifa; // está errado
         if(super.saldo <= somaDebito){
-            const sobra = super.saldo - somaDebito;
-            super.sacar(somaDebito - (sobra * -1));
-            this.#saldoDevedor -= sobra;
+            const sobra = somaDebito - super.saldo;
+            super.sacar(super.saldo);//super.sacar(somaDebito - sobra);
+            this.#saldoDevedor += sobra;
         }else{
             super.sacar(somaDebito);
         }
