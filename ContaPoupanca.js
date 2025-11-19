@@ -12,12 +12,8 @@ export class ContaPoupanca extends Conta {
         super.depositar(super.saldo * this.#rendimento);
     }
 
-
     toString() {
         return (super.toString() +
             "\nTarifa: " + this.#rendimento);
     }
-
-//não sei como vai funcionar a questao de rendimento e vira mes
-
 }

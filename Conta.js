@@ -60,7 +60,7 @@ export class Conta {
 
     transferir(valor, contaDestino){
         if(contaDestino instanceof Conta && this.sacar(valor)){
-            //this.sacar(valor);
+            this.sacar(valor);
             contaDestino.depositar(valor);
             return true;
         }

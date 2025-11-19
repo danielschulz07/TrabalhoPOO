@@ -9,7 +9,7 @@ export class ContaCorrente extends Conta {
     constructor(id, saldo, titular, tarifa = 17.5, limiteCredito = 100, juros = 0.1, saldoDevedor = 0) {
         super(id, saldo, titular);
         this.#tarifa = tarifa;
-        this.limiteCredito = limiteCredito;
+        this.#limiteCredito = limiteCredito;
         this.#juros = juros;
         this.#saldoDevedor = saldoDevedor;
     }
@@ -18,34 +18,20 @@ export class ContaCorrente extends Conta {
         return this.#limiteCredito;
     }
 
-    set limiteCredito(novoLimite) {
-        if (novoLimite >= 0) {
-            this.#limiteCredito = novoLimite;
-        } else if (this.#limiteCredito == null) {
-            this.#limiteCredito = 0;
-        }
-    }
-
     get saldoDevedor(){
         return this.#saldoDevedor
     }
 
-    /*set saldoDevedor(novoLimiteDevedor){
-        if(novoLimiteDevedor > this.#saldoDevedor){
-            this.#saldoDevedor = novoLimiteDevedor;
-        } else if(this.#saldoDevedor == undefined){
-            this.#saldoDevedor = 0;
-        }
-    }*/
-
     depositar(valor) {
-        if (valor > 0) {
-            if (!super.depositar(valor)) {
-                valor += super.saldo;
-                super.depositar(super.depositar);
-                this.saldo += saldo;
-            }
+        if (valor >= this.#saldoDevedor) {
+            const sobra = valor - this.#saldoDevedor;
+            this.#saldoDevedor -= this.#saldoDevedor;
+            super.depositar(sobra);
             return true;
+        } else {
+            valor += super.saldo;
+            super.depositar(super.depositar);
+            this.saldo += saldo;
         }
         return false;
     }
@@ -74,10 +60,9 @@ export class ContaCorrente extends Conta {
 
     viraMes(){
         const somaDebito = this.#juros * this.#saldoDevedor + this.#tarifa;
-        //const somaDebito = this.#juros + this.#tarifa; // está errado
         if(super.saldo <= somaDebito){
             const sobra = somaDebito - super.saldo;
-            super.sacar(super.saldo);//super.sacar(somaDebito - sobra);
+            super.sacar(super.saldo);
             this.#saldoDevedor += sobra;
         }else{
             super.sacar(somaDebito);
