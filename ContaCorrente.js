@@ -6,7 +6,7 @@ export class ContaCorrente extends Conta {
     #juros;
     #saldoDevedor;
 
-    constructor(id, saldo, titular, tarifa = 17.5, limiteCredito = 100, juros = 3.12, saldoDevedor = 0) {
+    constructor(id, saldo, titular, tarifa = 17.5, limiteCredito = 100, juros = 0.1, saldoDevedor = 0) {
         super(id, saldo, titular);
         this.#tarifa = tarifa;
         this.limiteCredito = limiteCredito;
@@ -63,18 +63,18 @@ export class ContaCorrente extends Conta {
     }
 
     limiteDisponivel(){
-        if(this.#saldoDevedor >= this.#limiteCredito){
-            return "Seu débito ultrapassou seu limite de crédito, você deve " + this.#saldoDevedor;
+        if(this.#saldoDevedor >= this.limiteCredito){
+            return (-this.#saldoDevedor);
         }else{
-            return super.saldo + this.#limiteCredito;
+            return super.saldo + (this.#limiteCredito - this.#saldoDevedor);
         }
 
     }
 
 
     viraMes(){
-        //const somaDebito = this.#juros * this.#saldoDevedor + this.#tarifa;
-        const somaDebito = this.#juros + this.#tarifa; // está errado
+        const somaDebito = this.#juros * this.#saldoDevedor + this.#tarifa;
+        //const somaDebito = this.#juros + this.#tarifa; // está errado
         if(super.saldo <= somaDebito){
             const sobra = somaDebito - super.saldo;
             super.sacar(super.saldo);//super.sacar(somaDebito - sobra);

@@ -5,7 +5,6 @@ import {ContaCorrente} from "./ContaCorrente.js";
 import {ContaPoupanca} from "./ContaPoupanca.js";
 import { Pessoa } from "./Pessoa.js";
 
-const vetContas = [];
 
 
 console.log("\nNomes das Pessoas:\n");
@@ -23,3 +22,14 @@ var pessoa2 = new Pessoa("Daniel", "34239482374", "09/09/2009");
 
 var vetClientesBanco = [pessoa1, pessoa2];
 var vetContasBanco = [contaCorrente1, contaPoup1];
+
+vetContasBanco.forEach((conta)=>conta.viraMes());
+
+
+
+console.log("\nNomes das Pessoas:\n");
+vetContasBanco.forEach( (conta) => {
+    console.log(conta.toString());
+    //objPessoa.categoria = "VIP";
+    //console.log(objPessoa.categoria + " - " + objPessoa.constructor.name);
+});
